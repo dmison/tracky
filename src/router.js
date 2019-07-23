@@ -1,15 +1,28 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "./views/Home.vue";
-
+import Entries from "@/views/Entries.vue";
+import EditEntry from "@/views/EditEntry.vue";
+import NewEntry from "@/views/NewEntry.vue";
 Vue.use(Router);
 
 export default new Router({
+  mode: "history",
   routes: [
     {
       path: "/",
-      name: "home",
-      component: Home
+      name: "entries",
+      component: Entries
+    },
+    {
+      path: "/entry/new",
+      name: "new-entry",
+      component: NewEntry
+    },
+    {
+      path: "/entry/:id/edit",
+      name: "edit-entry",
+      props: true,
+      component: EditEntry
     },
     {
       path: "/about",
