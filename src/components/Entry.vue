@@ -2,29 +2,23 @@
   <div class="entry-panel">
     <p>
       <span>{{ mood }}</span>
-      {{ entry.content }}
+      {{ content }}
     </p>
-    <button>Delete</button>
-    <router-link :to="{ name: 'edit-entry', params: { id } }">edit</router-link>
+    <button class="button del">delete</button>
+    <router-link
+      class="button edit"
+      :to="{ name: 'edit-entry', params: { id } }"
+      >edit</router-link
+    >
   </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
 export default {
   props: {
-    id: String
-  },
-
-  computed: {
-    ...mapGetters(["getEntry", "getMood"]),
-    entry() {
-      return this.getEntry(this.id);
-    },
-
-    mood() {
-      return this.getMood(this.entry.mood_id);
-    }
+    id: String,
+    content: String,
+    mood: String
   }
 };
 </script>
