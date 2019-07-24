@@ -23,9 +23,31 @@ export default {
 };
 </script>
 
-<style lang="css" scoped>
-
+<style lang="scss" scoped>
 div.entry-panel {
   border: 1px solid grey;
+  margin: 5px;
+
+  .button {
+    text-decoration: none;
+    border-radius: 3px;
+    font-family: inherit;
+    font-size: 0.8rem;
+    cursor: hand;
+    color: black;
+    border: 1px solid grey;
+    background-color: lightgrey;
+    padding: 3px 6px;
+  }
+
+  .del {
+    color: white;
+    border: 1px solid rgb(78, 14, 14);
+    background-color: rgb(153, 19, 19);
+    &:hover {
+      background-color: red;
+      color: black;
+    }
+  }
 }
 </style>
