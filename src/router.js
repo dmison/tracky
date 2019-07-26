@@ -3,6 +3,8 @@ import Router from "vue-router";
 import Entries from "@/views/Entries.vue";
 import EditEntry from "@/views/EditEntry.vue";
 import NewEntry from "@/views/NewEntry.vue";
+import NotFound from "@/views/NotFound.vue";
+
 Vue.use(Router);
 
 export default new Router({
@@ -32,6 +34,15 @@ export default new Router({
       // which is lazy-loaded when the route is visited.
       component: () =>
         import(/* webpackChunkName: "about" */ "./views/About.vue")
+    },
+    {
+      path: "/404",
+      name: "404",
+      component: NotFound
+    },
+    {
+      path: "*",
+      redirect: { name: "404" }
     }
   ]
 });
