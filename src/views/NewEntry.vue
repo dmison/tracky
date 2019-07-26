@@ -1,5 +1,5 @@
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapState } from "vuex";
 import EntryForm from "@/components/EntryForm";
 export default {
   components: {
@@ -11,6 +11,9 @@ export default {
       this.addEntry(entry);
       this.$router.push({ name: "entries" });
     }
+  },
+  computed: {
+    ...mapState(["moods"])
   },
   data() {
     return {
@@ -25,8 +28,13 @@ export default {
 
 <template lang="html">
   <div>
-    <h1>New Entry</h1>
-    <entry-form :entry="entry" action-name="Save" @entry-action="saveEntry" />
+    <h4>Creating new entry:</h4>
+    <entry-form
+      :entry="entry"
+      action-name="Save"
+      @entry-action="saveEntry"
+      :moods="moods.moods"
+    />
   </div>
 </template>
 

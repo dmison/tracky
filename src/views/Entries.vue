@@ -1,20 +1,21 @@
 <template lang="html">
   <div>
-    <h1>Entries</h1>
-    <ul>
-      <li :key="entry.id" v-for="entry in entries">
-        <Entry :id="entry.id" />
-      </li>
-    </ul>
+    <Entry
+      :key="entry.id"
+      v-for="entry in getEntries"
+      :id="entry.id"
+      :content="entry.content"
+      :mood="entry.mood"
+    />
   </div>
 </template>
 
 <script>
 import Entry from "@/components/Entry.vue";
-import { mapState } from "vuex";
+import { mapGetters } from "vuex";
 export default {
   computed: {
-    ...mapState(["entries"])
+    ...mapGetters(["getEntries"])
   },
   components: {
     Entry

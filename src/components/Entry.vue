@@ -1,9 +1,8 @@
 <template lang="html">
   <div class="entry-panel">
-    <p>
-      <span>{{ mood }}</span>
-      {{ content }}
-    </p>
+    <div class="markdown" v-html="markdownContent" />
+    <span>Mood: {{ mood }}</span>
+    <br />
     <button class="button del">delete</button>
     <router-link
       class="button edit"
@@ -14,16 +13,25 @@
 </template>
 
 <script>
+import md from "@/markdown";
 export default {
   props: {
     id: String,
     content: String,
     mood: String
+  },
+  computed: {
+    markdownContent() {
+      return md.render(this.content);
+    }
   }
 };
 </script>
 
 <style lang="scss" scoped>
+div.markdown {
+  font-size: 0.7rem;
+}
 div.entry-panel {
   border: 1px solid grey;
   margin: 5px;

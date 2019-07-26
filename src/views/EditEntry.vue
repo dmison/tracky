@@ -1,5 +1,5 @@
 <script>
-import { mapActions, mapGetters } from "vuex";
+import { mapActions, mapGetters, mapState } from "vuex";
 import EntryForm from "@/components/EntryForm";
 export default {
   props: ["id"],
@@ -14,6 +14,7 @@ export default {
     }
   },
   computed: {
+    ...mapState(["moods"]),
     ...mapGetters(["getEntry"]),
     entry() {
       return this.getEntry(this.id);
@@ -24,13 +25,14 @@ export default {
 
 <template>
   <div>
-    <h1>Edit</h1>
+    <h4>Editing entry:</h4>
     <entry-form
       :entry="entry"
       action-name="update"
       @entry-action="updateAction"
+      :moods="moods.moods"
     />
   </div>
 </template>
 
-<style lang="sass" scoped></style>
+<style lang="scss" scoped></style>
