@@ -33,8 +33,8 @@ div.markdown {
   font-size: 0.7rem;
 }
 div.entry-panel {
-  border: 1px solid grey;
-  margin: 5px;
+  border-bottom: 1px solid grey;
+  padding: 5px 10px;
 
   .button {
     text-decoration: none;

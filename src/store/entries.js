@@ -10,7 +10,8 @@ export const mutations = {
       id: uuid(),
       content: entry.content,
       mood_id: entry.mood_id,
-      datetime: new Date()
+      datetime: new Date(),
+      activities: entry.activities
     });
   },
   UPDATE_ENTRY(state, entry) {
