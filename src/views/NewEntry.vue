@@ -1,7 +1,10 @@
 <script>
 import { mapActions } from "vuex";
 import EntryForm from "@/components/EntryForm";
+import EntryFormSupport from "@/mixins/EntryFormSupport";
+
 export default {
+  mixins: [EntryFormSupport],
   components: {
     "entry-form": EntryForm
   },
@@ -27,7 +30,14 @@ export default {
 <template lang="html">
   <div>
     <h4>Creating new entry:</h4>
-    <entry-form :entry="entry" action-name="Save" @entry-action="saveEntry" />
+    <entry-form
+      :entry="entry"
+      action-name="Save"
+      @entry-action="saveEntry"
+      :moods="moods.moods"
+      :activities="activities.activities"
+      @add-activity="addNewActivity"
+    />
   </div>
 </template>
 

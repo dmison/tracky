@@ -20,9 +20,8 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
 export default {
-  props: { value: Array },
+  props: { value: Array, activities: Array },
   data() {
     return {
       addingNew: false,
@@ -30,18 +29,16 @@ export default {
     };
   },
   computed: {
-    ...mapState(["activities"]),
     theseActivities() {
-      return this.activities.activities.map(activity => {
+      return this.activities.map(activity => {
         activity.active = this.value.includes(activity.id);
         return activity;
       });
     }
   },
   methods: {
-    ...mapActions(["addActivity"]),
     addNewActivity() {
-      this.addActivity(this.newA);
+      this.$emit("add-activity", this.newA);
       this.newA = "";
       this.addingNew = false;
     },

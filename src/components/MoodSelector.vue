@@ -1,14 +1,3 @@
-<script>
-export default {
-  props: { value: Number, moods: Object },
-  methods: {
-    setMood(mood_id) {
-      this.$emit("set-mood", parseInt(mood_id));
-    }
-  }
-};
-</script>
-
 <template>
   <div>
     <p>How were you feeling?</p>
@@ -21,6 +10,17 @@ export default {
     </ul>
   </div>
 </template>
+
+<script>
+export default {
+  props: { value: Number, moods: Object },
+  methods: {
+    setMood(mood_id) {
+      this.$emit("set-mood", parseInt(mood_id));
+    }
+  }
+};
+</script>
 
 <style lang="scss" scoped>
 ul {
